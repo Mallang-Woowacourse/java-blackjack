@@ -2,7 +2,7 @@ package domain.state;
 
 import domain.card.CardArea;
 
-public class Initial implements BlackJackGameState {
+public class Initial implements BlackJackGameStateInterface {
 
     public BlackJackGameState initialDrawTwoCard(final CardArea cardArea) {
         validateSize(cardArea);
