@@ -10,6 +10,11 @@ public class Hittable extends BlackJackGameState {
     }
 
     @Override
+    public boolean hittable() {
+        return true;
+    }
+
+    @Override
     public BlackJackGameState hit(final Card card) {
         cardArea.addCard(card);
         if (cardArea.isBust()) {

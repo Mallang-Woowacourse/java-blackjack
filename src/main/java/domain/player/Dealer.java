@@ -14,12 +14,12 @@ public class Dealer extends Participant {
     }
 
     @Override
-    public boolean canHit() {
+    public boolean hittable() {
         return DEALER_DONT_HIT_SCORE.isLargerThan(score());
     }
 
     public Card firstCard() {
-        return cardArea.firstCard();
+        return state.cardArea().firstCard();
     }
 
     public Revenue compete(final Gambler gambler) {

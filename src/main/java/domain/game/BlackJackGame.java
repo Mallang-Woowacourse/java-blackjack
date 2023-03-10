@@ -48,12 +48,12 @@ public class BlackJackGame {
     }
 
     public boolean existCanHitGambler() {
-        return gamblers.stream().anyMatch(Gambler::canHit);
+        return gamblers.stream().anyMatch(Gambler::hittable);
     }
 
     public Gambler findCanHitGambler() {
         return gamblers.stream()
-                .filter(Gambler::canHit)
+                .filter(Gambler::hittable)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Hit 가능한 참여자가 없습니다."));
     }
@@ -61,7 +61,7 @@ public class BlackJackGame {
     public void hitOrStayForGambler(final Gambler gambler, final HitState hitState) {
         validatePlayerExist(gambler);
         gambler.changeState(hitState);
-        if (gambler.wantHit()) {
+        if (gambler.hittable()) {
             gambler.hit(cardDeck);
         }
     }
@@ -73,7 +73,7 @@ public class BlackJackGame {
     }
 
     public boolean hitForDealerWhenShouldMoreHit() {
-        if (dealer.canHit()) {
+        if (dealer.hittable()) {
             dealer.hit(cardDeck);
             return true;
         }

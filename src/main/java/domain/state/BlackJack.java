@@ -1,8 +1,6 @@
 package domain.state;
 
 import domain.card.CardArea;
-import domain.player.BettingMoney;
-import domain.player.Revenue;
 
 public class BlackJack extends BlackJackGameState {
 
@@ -11,7 +9,7 @@ public class BlackJack extends BlackJackGameState {
     }
 
     @Override
-    public Revenue revenue(final BettingMoney bettingMoney) {
-        return Revenue.blackJackWin(bettingMoney);
+    public boolean isBlackJack() {
+        return true;
     }
 }

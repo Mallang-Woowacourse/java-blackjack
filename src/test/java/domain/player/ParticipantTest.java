@@ -28,7 +28,7 @@ class ParticipantTest {
     final CardArea cardArea = equal16CardArea();
     final Participant participant = new Participant(코다이름(), cardArea) {
         @Override
-        public boolean canHit() {
+        public boolean hittable() {
             return false;
         }
     };
@@ -38,7 +38,7 @@ class ParticipantTest {
         // when & then
         assertDoesNotThrow(() -> new Participant(코다이름(), equal16CardArea()) {
             @Override
-            public boolean canHit() {
+            public boolean hittable() {
                 return false;
             }
         });

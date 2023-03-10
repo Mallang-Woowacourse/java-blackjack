@@ -4,8 +4,11 @@ import domain.card.CardArea;
 
 public class Initial implements BlackJackGameStateInterface {
 
-    public BlackJackGameState initialDrawTwoCard(final CardArea cardArea) {
-        validateSize(cardArea);
+    public BlackJackGameState initial(final CardArea cardArea) {
+        // TODO validateSize(cardArea);
+        if (cardArea.isBust()) {
+            return new Bust(cardArea);
+        }
         if (cardArea.isBlackJack()) {
             return new BlackJack(cardArea);
         }

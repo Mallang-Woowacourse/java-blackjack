@@ -29,7 +29,7 @@ class DealerTest {
         final Participant dealer = new Dealer(CardAreaFixture.under16CardArea());
 
         // when & then
-        assertTrue(dealer.canHit());
+        assertTrue(dealer.hittable());
     }
 
     @Test
@@ -38,7 +38,7 @@ class DealerTest {
         final Participant dealer = new Dealer(CardAreaFixture.over16CardArea());
 
         // when & then
-        assertFalse(dealer.canHit());
+        assertFalse(dealer.hittable());
     }
 
     @Test

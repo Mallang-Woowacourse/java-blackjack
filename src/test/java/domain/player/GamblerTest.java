@@ -39,7 +39,7 @@ class GamblerTest {
         코다.changeState(hitState);
 
         // when & then
-        assertTrue(코다.canHit());
+        assertTrue(코다.hittable());
     }
 
     @ParameterizedTest(name = "참가자는 버스트되었거나, STAY 를 원한다면 카드를 더 받을 수 없다")
@@ -50,7 +50,7 @@ class GamblerTest {
         코다.changeState(hitState);
 
         // when & then
-        assertFalse(코다.canHit());
+        assertFalse(코다.hittable());
     }
 
     static Stream<Arguments> canNotMoreCard() {

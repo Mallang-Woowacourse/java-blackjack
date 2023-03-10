@@ -20,10 +20,10 @@ class HittableTest {
             // given
             final CardArea cardArea = new CardArea(diamond(TEN), diamond(TWO));
             final Initial initial = new Initial();
-            final BlackJackGameState state = initial.initialDrawTwoCard(cardArea);
+            final BlackJackGameStateInterface state = initial.initial(cardArea);
 
             // when
-            final BlackJackGameState after = state.hit(diamond(EIGHT));
+            final BlackJackGameStateInterface after = state.hit(diamond(EIGHT));
 
             // then
             assertThat(after)
@@ -35,10 +35,10 @@ class HittableTest {
             // given
             final CardArea cardArea = new CardArea(diamond(TEN), diamond(TWO));
             final Initial initial = new Initial();
-            final BlackJackGameState state = initial.initialDrawTwoCard(cardArea);
+            final BlackJackGameStateInterface state = initial.initial(cardArea);
 
             // when
-            final BlackJackGameState after = state.hit(diamond(NINE));
+            final BlackJackGameStateInterface after = state.hit(diamond(NINE));
 
             // then
             assertThat(after)
@@ -50,10 +50,10 @@ class HittableTest {
             // given
             final CardArea cardArea = new CardArea(diamond(TEN), diamond(TWO));
             final Initial initial = new Initial();
-            final BlackJackGameState state = initial.initialDrawTwoCard(cardArea);
+            final BlackJackGameStateInterface state = initial.initial(cardArea);
 
             // when
-            final BlackJackGameState after = state.hit(diamond(TEN));
+            final BlackJackGameStateInterface after = state.hit(diamond(TEN));
 
             // then
             assertThat(after)
@@ -66,10 +66,10 @@ class HittableTest {
         // given
         final CardArea cardArea = new CardArea(diamond(TEN), diamond(TWO));
         final Initial initial = new Initial();
-        final BlackJackGameState state = initial.initialDrawTwoCard(cardArea);
+        final BlackJackGameStateInterface state = initial.initial(cardArea);
 
         // when
-        final BlackJackGameState after = state.changeStay();
+        final BlackJackGameStateInterface after = state.changeStay();
 
         // then
         assertThat(after).isInstanceOf(Stay.class);

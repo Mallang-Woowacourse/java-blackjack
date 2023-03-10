@@ -3,15 +3,18 @@ package domain.player;
 import domain.card.BlackJackScore;
 import domain.card.CardArea;
 import domain.card.CardDeck;
+import domain.state.BlackJackGameStateInterface;
+import domain.state.Initial;
 
 public abstract class Participant {
 
     protected final Name name;
-    protected final CardArea cardArea;
+    protected BlackJackGameStateInterface state;
 
     protected Participant(final Name name, final CardArea cardArea) {
         this.name = name;
-        this.cardArea = cardArea;
+        final Initial initial = new Initial();
+        state = initial.initial(cardArea);
     }
 
     public Name name() {
@@ -19,7 +22,7 @@ public abstract class Participant {
     }
 
     public CardArea cardArea() {
-        return cardArea;
+        return state.cardArea();
     }
 
     public String nameValue() {
@@ -27,17 +30,17 @@ public abstract class Participant {
     }
 
     public boolean isBust() {
-        return cardArea.isBust();
+        return state.isBust();
     }
 
     public void hit(final CardDeck cardDeck) {
-        cardArea.addCard(cardDeck.draw());
+        state = state.hit(cardDeck.draw());
     }
 
-    public abstract boolean canHit();
+    public abstract boolean hittable();
 
     public BlackJackScore score() {
-        return cardArea.calculate();
+        return state.score();
     }
 
     protected boolean isLargerScoreThan(final Participant participant) {

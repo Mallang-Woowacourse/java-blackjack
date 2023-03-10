@@ -1,20 +1,36 @@
 package domain.state;
 
+import domain.card.BlackJackScore;
 import domain.card.Card;
-import domain.player.BettingMoney;
-import domain.player.Revenue;
+import domain.card.CardArea;
 
 public interface BlackJackGameStateInterface {
 
-    default BlackJackGameState hit(final Card card) {
+    default boolean hittable() {
+        return false;
+    }
+
+    default boolean isBust() {
+        return false;
+    }
+
+    default boolean isBlackJack() {
+        return false;
+    }
+
+    default BlackJackScore score() {
         throw new UnsupportedOperationException();
     }
 
-    default Revenue revenue(final BettingMoney bettingMoney) {
+    default CardArea cardArea() {
         throw new UnsupportedOperationException();
     }
 
-    default BlackJackGameState changeStay() {
+    default BlackJackGameStateInterface hit(final Card card) {
+        throw new UnsupportedOperationException();
+    }
+
+    default BlackJackGameStateInterface changeStay() {
         throw new UnsupportedOperationException();
     }
 }
